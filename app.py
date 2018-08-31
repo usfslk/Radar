@@ -5,7 +5,6 @@ from newsapi import NewsApiClient
 app = Flask(__name__, static_url_path="/static")
 
 indicoio.config.api_key = '43751098d41ba733826cc75dd3173717'
-newsapi = NewsApiClient(api_key='b71d9eefeca94a1487e7fc9bf9964af8')
 
 @app.route('/')
 def main():	
@@ -24,7 +23,8 @@ def main():
 		Score INTEGER
 	); 
 	""")
-
+	
+    newsapi = NewsApiClient(api_key='b71d9eefeca94a1487e7fc9bf9964af8')
 	data = newsapi.get_everything(
                                       sources='crypto-coins-news',
                                       language='en',
