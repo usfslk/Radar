@@ -5,10 +5,10 @@ from newsapi import NewsApiClient
 app = Flask(__name__, static_url_path="/static")
 
 indicoio.config.api_key = '43751098d41ba733826cc75dd3173717'
+newsapi = NewsApiClient(api_key='b71d9eefeca94a1487e7fc9bf9964af8')
 
 @app.route('/')
 def main():	
-	newsapi = NewsApiClient(api_key='b71d9eefeca94a1487e7fc9bf9964af8')
 	conn = sqlite3.connect(":memory:")
 	cursor = conn.cursor()
 	keyword = str(request.args.get( "keyword" , None ))
