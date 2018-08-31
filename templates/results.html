@@ -1,0 +1,54 @@
+{% extends "common/page_base.html" %}
+{% block content %}
+
+<style type="text/css">
+  .spacer {
+    margin-top: 10px
+  }
+  .mycard {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 2px 1px 15px #f3f1f1;
+  padding: 50px;
+  margin: 50px,
+}
+</style>
+
+   <!-- Projects Section -->
+    <section id="projects" class="projects-section bg-light">
+      <div class="container">
+
+        <!-- Featured Project Row -->
+        <div class="row align-items-center no-gutters mb-4 mb-lg-5">
+          <div class="col-xl-8 col-lg-7">
+            <img class="img-fluid mb-3 mb-lg-0" src="static/img/illu.png" alt="">
+          </div>
+          <div class="col-xl-4 col-lg-5">
+            <div class="featured-text text-center text-lg-left">
+              <h4>{{ average }}%</h4>
+              <p class="text-black-50 mb-0"> {{ keyword }} </p>
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="row">
+          {% for Title, Description, URL, IMGLink, Score in resultslist %}
+          
+            <div class="mycard">
+              <a href="{{ URL }}" target="_blank">
+              <h4>{{ Title }}</h4>
+              </a>
+              <hr class="d-none d-lg-block">
+             <p class="text-black-50">{{ Description }}</p>
+            <h5>{{ Score }}%</h5>
+          </div>
+
+          <div class="spacer">&nbsp</div>
+
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+{% endblock %}
