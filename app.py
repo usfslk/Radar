@@ -11,6 +11,7 @@ def main():
 	conn = sqlite3.connect(":memory:")
 	cursor = conn.cursor()
 	keyword = str(request.args.get( "keyword" , None ))
+	newsapi = NewsApiClient(api_key='b71d9eefeca94a1487e7fc9bf9964af8')
 
 	cursor.execute(""" 
 	CREATE TABLE IF NOT EXISTS main(
@@ -23,8 +24,7 @@ def main():
 		Score INTEGER
 	); 
 	""")
-	
-    newsapi = NewsApiClient(api_key='b71d9eefeca94a1487e7fc9bf9964af8')
+
 	data = newsapi.get_everything(
                                       sources='crypto-coins-news',
                                       language='en',
