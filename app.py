@@ -1,8 +1,6 @@
 from flask import Flask, render_template, request
 import json, indicoio, sqlite3
 from newsapi import NewsApiClient
-from dateutil.parser import *
-import dateutil as dateutil.parser
 
 app = Flask(__name__, static_url_path="/static")
 
@@ -45,8 +43,7 @@ def main():
 		description = post['description']
 		url = post['url']
 		imglink = post['urlToImage']
-		dateparse = post['publishedAt']
-		datetime = str(dateutil.parser.parse(dateparse).time())
+		datetime = post['publishedAt']
 		scoredesc = indicoio.sentiment(description) * 1.5
 		calc = (scoredesc*100)
 		verg = calc / 2
@@ -104,8 +101,7 @@ def results():
 		datasource = str(post['source'])
 		url = post['url']
 		imglink = post['urlToImage']
-		dateparse = post['publishedAt']
-		datetime = str(dateutil.parser.parse(dateparse).time())
+		datetime = post['publishedAt']
 		scoredesc = indicoio.sentiment(description) * 1.5
 		calc = (scoredesc*100)
 		verg = calc / 2
