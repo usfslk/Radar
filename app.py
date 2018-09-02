@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import json, indicoio, sqlite3
 from newsapi import NewsApiClient
+import dateutil.parser
 
 app = Flask(__name__, static_url_path="/static")
 
@@ -21,7 +22,8 @@ def main():
 		URL TEXT,
 		IMGLink TEXT,
 		Publish TEXT,
-		Score INTEGER
+		Score INTEGER, 
+		IndexLine INTEGER
 	); 
 	""")
 
@@ -34,41 +36,44 @@ def main():
 	load = data['articles']
 	resultslist = []
 	scorelist = []
+	index = 0
+	limit = 3
 
-	for post in load:
+	for index, post in zip(range(limit), load):
 		title = post['title']
 		description = post['description']
 		url = post['url']
 		imglink = post['urlToImage']
-		datetime = post['publishedAt']
-		scoredesc = indicoio.sentiment(description) * 2
+		dateparse = post['publishedAt']
+		datetime = str(dateutil.parser.parse(dateparse).time())
+		scoredesc = indicoio.sentiment(description) * 1.5
 		calc = (scoredesc*100)
 		verg = calc / 2
 		score = ("%.0f" % verg)
 		scorelist.append(float(score))
-		nline = title, description, url, imglink, datetime, score
-		cursor.execute('INSERT INTO main (Title, Description, URL, IMGLink, Publish, Score) VALUES (?, ?, ?, ?, ?, ?)', (nline))
+		nline = title, description, url, imglink, datetime, score, index
+		cursor.execute('INSERT INTO main (Title, Description, URL, IMGLink, Publish, Score, IndexLine) VALUES (?, ?, ?, ?, ?, ?, ?)', (nline))
 		conn.commit()
 		
 	sumlist = (sum(scorelist))
 	lenght_list = (len(scorelist))
 	before = (sumlist/lenght_list)
-	average = float("%.0f" % before) * 2
+	average = float("%.0f" % before) * 1.5
 
-	for row in cursor.execute("SELECT Title, Description, URL, IMGLink, Score FROM main ORDER BY Score DESC"):
+	for row in cursor.execute("SELECT Title, Description, URL, IMGLink, Score, Publish FROM main ORDER BY Score DESC"):
 		resultslist.append(row)
 
 	return render_template('main.html', resultslist=resultslist, keyword=keyword, average=average)
 
-@app.route('/results', methods=['GET','POST'])
-def results():
 
+############
+
+@app.route('/analysis', methods=['GET','POST'])
+def results():
+	keyword = str(request.args.get( "keyword" , None ))
 	newsapi = NewsApiClient(api_key='b71d9eefeca94a1487e7fc9bf9964af8')
 	conn = sqlite3.connect(":memory:")
 	cursor = conn.cursor()
-	keyword = str(request.args.get( "keyword" , None ))
-
-
 	cursor.execute(""" 
 	CREATE TABLE IF NOT EXISTS main(
 		Keyword TEXT UNIQUE,
@@ -77,45 +82,56 @@ def results():
 		URL TEXT,
 		IMGLink TEXT,
 		Publish TEXT,
-		Score INTEGER
+		Score INTEGER,
+		IndexLine INTEGER
 	); 
 	""")
-
 	data = newsapi.get_everything(q=keyword,
                                       sources='crypto-coins-news',
                                       language='en',
-                                      sort_by='publishedAt',
-                                      )
-
+                                      sort_by='relevancy',
+								)
 	load = data['articles']
 	resultslist = []
 	scorelist = []
+	index = 0
+	limit = 1
 
-	for post in load:
+	for index, post in zip(range(limit), load):
 		title = post['title']
 		description = post['description']
+		datasource = str(post['source'])
 		url = post['url']
 		imglink = post['urlToImage']
-		datetime = post['publishedAt']
-		scoredesc = indicoio.sentiment(description) * 2
+		dateparse = post['publishedAt']
+		datetime = str(dateutil.parser.parse(dateparse).time())
+		scoredesc = indicoio.sentiment(description) * 1.5
 		calc = (scoredesc*100)
 		verg = calc / 2
 		score = ("%.0f" % verg)
 		scorelist.append(float(score))
 		nline = title, description, url, imglink, datetime, score
-		cursor.execute('INSERT INTO main (Title, Description, URL, IMGLink, Publish, Score) VALUES (?, ?, ?, ?, ?, ?)', (nline))
+		cursor.execute('INSERT INTO main ( Title, Description, URL, IMGLink, Publish, Score) VALUES (?, ?, ?, ?, ?, ?)', (nline))
 		conn.commit()
 		
 	sumlist = (sum(scorelist))
 	lenght_list = (len(scorelist))
 	before = (sumlist/lenght_list)
-	average = float("%.0f" % before) * 2
+	average = float("%.0f" % before) * 1.5
 
-	for row in cursor.execute("SELECT Title, Description, URL, IMGLink, Score FROM main ORDER BY Score DESC"):
+	for row in cursor.execute("SELECT Title, Description, URL, IMGLink, Score, Publish FROM main ORDER BY Score DESC"):
 		resultslist.append(row)
 
-	return render_template('results.html', resultslist=resultslist, keyword=keyword, average=average)
+	return render_template('analysis.html', resultslist=resultslist, keyword=keyword, average=average)
 
+
+@app.route('/analytics')
+def analytics():
+	return render_template('analytics.html')
+
+@app.route('/about')
+def about():
+	return render_template('about.html')
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)

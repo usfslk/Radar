@@ -1,82 +1,300 @@
 {% extends "common/page_base.html" %}
 {% block content %}
 
+<h1>
+True feelings behind every cryptocoin        
+</h1>
+
+<h4>Analyze curated content like never before.</h4>
+<div class="spacer">&nbsp</div>
+
 <style type="text/css">
   .spacer {
-    margin-top: 10px
+    margin-top: 5px;
   }
-  .mycard {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 2px 1px 15px #f3f1f1;
-  padding: 50px;
-  margin: 50px,
+#illu {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%
 }
+
 </style>
-    <!-- Header -->
-    <header class="masthead">
-      <div class="container d-flex h-100 align-items-center">
-        <div class="mx-auto text-center">
-          <h1 class="mx-auto my-0 text-uppercase">Radar</h1>
-          <h2 class="text-white-50 mx-auto mt-2 mb-5">True feelings behind every cryptocoin</h2>
-          <a href="#signup" class="btn btn-primary js-scroll-trigger">Try It</a>
-        </div>
-      </div>
-    </header>
 
-   <!-- Projects Section -->
-    <section id="projects" class="projects-section bg-light">
-      <div class="container">
-
-        <!-- Featured Project Row -->
-        <div class="row align-items-center no-gutters mb-4 mb-lg-5">
-          <div class="col-xl-8 col-lg-7">
-            <img class="img-fluid mb-3 mb-lg-0" src="static/img/illu.png" alt="">
+<div class="row">
+            <div class="col-lg-7 grid-margin stretch-card">
+              <!--weather card-->
+              <div class="card card-weather">
+                <div class="card-body">
+                  <div class="weather-date-location">
+                    <p class="text-gray">
+                      <span class="weather-date">With Radar you will get the filtrated information you’re looking for, from more than 5000 leading publications across the web and social medias. With the help of natural language processing you can now extract information pertaining to any cryptocoin. Say bye-bye to long, drab information that eats into your valuable time.</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <!--weather card ends-->
+            </div>
+            <div class="col-lg-5 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h2 class="card-title text-primary mb-5">Blockchain Performance History</h2>
+                  <div class="wrapper d-flex justify-content-between">
+                    <div class="side-left">
+                      <p class="mb-2">Best performance</p>
+                      <p class="display-3 mb-4 font-weight-light">+45.2%</p>
+                    </div>
+                    <div class="side-right">
+                      <small class="text-muted">06/2018</small>
+                    </div>
+                  </div>
+                  <div class="wrapper d-flex justify-content-between">
+                    <div class="side-left">
+                      <p class="mb-2">Worst performance</p>
+                      <p class="display-3 mb-5 font-weight-light">-35.3%</p>
+                    </div>
+                    <div class="side-right">
+                      <small class="text-muted">01/2018</small>
+                    </div>
+                  </div>
+                  <div class="wrapper mt-4">
+                    <div class="d-flex justify-content-between">
+                      <p class="mb-2">Mood Today</p>
+                      <p class="mb-2 text-success"> {{average}}% </p>
+                    </div>
+                    <div class="progress">
+                      <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{average}}%" aria-valuenow="56"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="col-xl-4 col-lg-5">
-            <div class="featured-text text-center text-lg-left">
-              <h4>Mood Today : {{ average }}%</h4>
-              <p class="text-black-50 mb-0">Radar is open source and MIT licensed. This means you can use it for any project - even commercial projects! Download it, customize it, and publish your website!</p>
+
+<div class="row">
+
+<div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+    <div class="card card-statistics">
+      <div class="card-body">
+        <div class="clearfix">
+          <div class="float-left">
+            <img src="https://s2.coinmarketcap.com/static/img/coins/32x32/1.png" />
+          </div>
+          <div class="float-right">
+            <p class="mb-0 text-right">(BTC)</p>
+            <div class="fluid-container">
+              <h3 class="font-weight-medium text-right mb-0">Bitcoin</h3>
             </div>
           </div>
         </div>
+    <div class="spacer">&nbsp</div>
+    <a href="/analysis?keyword=Bitcoin">
+    <button type="button" class="btn btn-light btn-rounded btn-fw">Get Started</button></a>
+      </div>
+    </div>
+  </div>
 
-        
-        <div class="row">
-          {% for Title, Description, URL, IMGLink, Score in resultslist %}
-          
-            <div class="mycard">
-              <a href="{{ URL }}" target="_blank">
-              <h4>{{ Title }}</h4>
-              </a>
-              <hr class="d-none d-lg-block">
-             <p class="text-black-50">{{ Description }}</p>
-            <h5>{{ Score }}%</h5>
+<div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+    <div class="card card-statistics">
+      <div class="card-body">
+        <div class="clearfix">
+          <div class="float-left">
+            <img src="https://s2.coinmarketcap.com/static/img/coins/32x32/1027.png" />
           </div>
+          <div class="float-right">
+            <p class="mb-0 text-right">(ETH)</p>
+            <div class="fluid-container">
+              <h3 class="font-weight-medium text-right mb-0">Ethereum</h3>
+            </div>
+          </div>
+        </div>
+    <div class="spacer">&nbsp</div>
+    <a href="/analysis?keyword=Ethereum">
+    <button type="button" class="btn btn-light btn-rounded btn-fw">Get Started</button></a>
+      </div>
+    </div>
+  </div>
 
+<div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+    <div class="card card-statistics">
+      <div class="card-body">
+        <div class="clearfix">
+          <div class="float-left">
+            <img src="https://s2.coinmarketcap.com/static/img/coins/32x32/512.png" />
+          </div>
+          <div class="float-right">
+            <p class="mb-0 text-right">(XLM)</p>
+            <div class="fluid-container">
+              <h3 class="font-weight-medium text-right mb-0">Stellar</h3>
+            </div>
+          </div>
+        </div>
+    <div class="spacer">&nbsp</div>
+    <a href="/analysis?keyword=Stellar">
+    <button type="button" class="btn btn-light btn-rounded btn-fw">Get Started</button></a>
+    </div>
+    </div>
+  </div>
+
+ <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+    <div class="card card-statistics">
+      <div class="card-body">
+        <div class="clearfix">
+          <div class="float-left">
+            <img src="https://s2.coinmarketcap.com/static/img/coins/32x32/1214.png" />
+          </div>
+          <div class="float-right">
+            <p class="mb-0 text-right">(LSK)</p>
+            <div class="fluid-container">
+              <h3 class="font-weight-medium text-right mb-0">Lisk</h3>
+            </div>
+          </div>
+        </div>
+    <div class="spacer">&nbsp</div>
+    <a href="/analysis?keyword=Lisk">
+    <button type="button" class="btn btn-light btn-rounded btn-fw">Get Started</button></a>
+    </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+
+<div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+    <div class="card card-statistics">
+      <div class="card-body">
+        <div class="clearfix">
+          <div class="float-left">
+            <img src="https://s2.coinmarketcap.com/static/img/coins/32x32/825.png" />
+          </div>
+          <div class="float-right">
+            <p class="mb-0 text-right">(USDT)</p>
+            <div class="fluid-container">
+              <h3 class="font-weight-medium text-right mb-0">Thether</h3>
+            </div>
+          </div>
+        </div>
+    <div class="spacer">&nbsp</div>
+    <a href="/analysis?keyword=Thether">
+    <button type="button" class="btn btn-light btn-rounded btn-fw">Get Started</button></a>
+      </div>
+    </div>
+  </div>
+
+<div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+    <div class="card card-statistics">
+      <div class="card-body">
+        <div class="clearfix">
+          <div class="float-left">
+            <img src="https://s2.coinmarketcap.com/static/img/coins/32x32/52.png" />
+          </div>
+          <div class="float-right">
+            <p class="mb-0 text-right">(XRP)</p>
+            <div class="fluid-container">
+              <h3 class="font-weight-medium text-right mb-0">XRP</h3>
+            </div>
+          </div>
+        </div>
+    <div class="spacer">&nbsp</div>
+    <a href="/analysis?keyword=XRP">
+    <button type="button" class="btn btn-light btn-rounded btn-fw">Get Started</button></a>
+      </div>
+    </div>
+  </div>
+
+<div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+    <div class="card card-statistics">
+      <div class="card-body">
+        <div class="clearfix">
+          <div class="float-left">
+            <img src="https://s2.coinmarketcap.com/static/img/coins/32x32/2566.png" />
+          </div>
+          <div class="float-right">
+            <p class="mb-0 text-right">(ONT)</p>
+            <div class="fluid-container">
+              <h3 class="font-weight-medium text-right mb-0">Ontology</h3>
+            </div>
+          </div>
+        </div>
+    <div class="spacer">&nbsp</div>
+    <a href="/analysis?keyword=Ontology">
+    <button type="button" class="btn btn-light btn-rounded btn-fw">Get Started</button></a>
+    </div>
+    </div>
+  </div>
+
+ <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+    <div class="card card-statistics">
+      <div class="card-body">
+        <div class="clearfix">
+          <div class="float-left">
+            <img src="https://s2.coinmarketcap.com/static/img/coins/32x32/328.png" />
+          </div>
+          <div class="float-right">
+            <p class="mb-0 text-right">(XMR)</p>
+            <div class="fluid-container">
+              <h3 class="font-weight-medium text-right mb-0">Monero</h3>
+            </div>
+          </div>
+        </div>
+    <div class="spacer">&nbsp</div>
+    <a href="/analysis?keyword=Monero">
+    <button type="button" class="btn btn-light btn-rounded btn-fw">Get Started</button></a>
+    </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+
+<div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+  <div class="card card-statistics">
+    <div class="card-body">
+      <div class="fluid-container">
+
+          <img id="illu"  src="static/images/illu.png">
+          <h3 class="text-center">Try it for free</h3>
+
+          <form action="/analysis">
           <div class="spacer">&nbsp</div>
+          <input type="text" class="form-control" required="" name="keyword" placeholder="Enter Cryptocoin">
+          <div class="spacer">&nbsp</div>
+          <button type="submit" class="btn btn-dark btn-submit btn-rounded btn-fw btn-block">Submit</button>
+          </form>
 
-          {% endfor %}
-        </div>
       </div>
-    </section>
+    </div>
+  </div>
+</div>
 
+{% for Title, Description, URL, IMGLink, Score, Publish in resultslist %}
+<div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+  <div class="card card-statistics">
+    <div class="card-body">
+      <div class="fluid-container">
 
-    <!-- Form -->
-    <section id="signup" class="signup-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-10 col-lg-8 mx-auto text-center">
-            <h2 class="text-white mb-5">Try it for free</h2>
-
-            <form action=/results class="form-inline d-flex">
-              <input class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" required="" name="keyword" placeholder="Enter Cryptocoin">
-              <button type="submit" class="btn btn-primary mx-auto">Get Started</button>
-            </form>
-
-          </div>
+        <div class="progress">
+        <div class="progress-bar bg-success progress-bar-striped progress-bar-animated"
+        role="progressbar" style="width:{{ Score }}%" aria-valuemax="100">
         </div>
-      </div>
-    </section>
+        </div>
 
-    {% endblock %}
+        <div class="spacer">&nbsp</div>
+        <h3 class="font-weight-medium mb-0">{{ Title }}</h3>
+        <p class="mb-0">{{ Description }}</p>        
+        <div class="spacer">&nbsp</div>
+        <a href="{{ URL }}" target="_blank">
+        <button type="button" class="btn btn-light btn-rounded btn-fw">
+        Read Article
+        </button>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+
+{% endblock %}
