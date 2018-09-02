@@ -36,7 +36,7 @@ def main():
 	resultslist = []
 	scorelist = []
 	index = 0
-	limit = 3
+	limit = 7
 
 	for index, post in zip(range(limit), load):
 		title = post['title']
@@ -93,7 +93,7 @@ def results():
 	resultslist = []
 	scorelist = []
 	index = 0
-	limit = 1
+	limit = 12
 
 	for index, post in zip(range(limit), load):
 		title = post['title']
