@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 import json, indicoio, sqlite3
-from newsapi import NewsApiClient
+from newsapi import *
 import dateutil.parser
 
 app = Flask(__name__, static_url_path="/static")
