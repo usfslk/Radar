@@ -89,7 +89,7 @@ def results():
 	for pagenum in range(2, num_pages + 1):
 		data = newsapi.get_everything(    sources='crypto-coin-news',
 		                                  language='en',
-		                                  sort_by='publishedAt',
+		                                  sort_by='relevancy',
 		                                  page=pagenum,
 		                                  q=keyword
 									 )
@@ -100,17 +100,14 @@ def results():
 			description = post['description']
 			url = post['url']
 			imglink = post['urlToImage']
-			if keyword in title:
-				scoredesc = indicoio.sentiment(title)
-				calc = (scoredesc*100)
-				score = ("%.2f" % calc)
-				scorelist.append(float(score))
-				nline = keyword, title, description, url, imglink, score
-				cursor.execute('INSERT INTO main (Keyword, Title, Description, URL, IMGLink, Score)  VALUES (?, ?, ?, ?, ?, ?)', (nline))
-				conn.commit()
-			else:
-				pass
-				
+			scoredesc = indicoio.sentiment(title)
+			calc = (scoredesc*100)
+			score = ("%.2f" % calc)
+			scorelist.append(float(score))
+			nline = keyword, title, description, url, imglink, score
+			cursor.execute('INSERT INTO main (Keyword, Title, Description, URL, IMGLink, Score)  VALUES (?, ?, ?, ?, ?, ?)', (nline))
+			conn.commit()
+
 	for row in cursor.execute("SELECT Title, Description, URL, IMGLink, Score, sqltime FROM main ORDER BY Score DESC LIMIT 16"):
 		resultslist.append(row)
 
