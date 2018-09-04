@@ -87,11 +87,11 @@ def results():
 
 
 	for pagenum in range(2, num_pages + 1):
-		data = newsapi.get_everything(    sources='crypto-coin-news',
+		data = newsapi.get_everything(    q=keyword,
+										  sources='crypto-coin-news',
 		                                  language='en',
-		                                  sort_by='relevancy',
+		                                  sort_by='publishedAt',
 		                                  page=pagenum,
-		                                  q=keyword
 									 )
 		load = data['articles']
 
