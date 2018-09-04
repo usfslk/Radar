@@ -65,7 +65,7 @@ def main():
 def results():
 
 	keyword = str(request.args.get( "keyword" , None ))
-	conn = sqlite3.connect("analysis.db")
+	conn = sqlite3.connect(":memory:")
 	cursor = conn.cursor()
 	cursor.execute(""" 
 	CREATE TABLE IF NOT EXISTS main(
@@ -83,7 +83,7 @@ def results():
 	scorelist = []
 
 	pagenum = 1
-	num_pages = 5
+	num_pages = 3
 
 
 	for pagenum in range(2, num_pages + 1):
@@ -114,10 +114,8 @@ def results():
 	for row in cursor.execute("SELECT Title, Description, URL, IMGLink, Score, sqltime FROM main ORDER BY Score DESC LIMIT 16"):
 		resultslist.append(row)
 
-
 	# for row in cursor.execute("SELECT Score FROM main ORDER BY sqltime DESC LIMIT 20"):
 	# 	scorelist.append(row[0]) 
-
 	# sumlist = (sum(scorelist))
 	# lenght_list = (len(scorelist))
 	# before = (sumlist/lenght_list)
