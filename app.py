@@ -83,14 +83,14 @@ def results():
 	scorelist = []
 
 	pagenum = 1
-	num_pages = 3
+	num_pages = 1
 
 
 	for pagenum in range(2, num_pages + 1):
 		data = newsapi.get_everything(    q=keyword,
 										  sources='crypto-coin-news',
 		                                  language='en',
-		                                  sort_by='publishedAt',
+		                                  sort_by='relevancy',
 		                                  page=pagenum,
 									 )
 		load = data['articles']
