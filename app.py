@@ -83,7 +83,7 @@ def results():
 	scorelist = []
 
 	pagenum = 1
-	num_pages = 1
+	num_pages = 10
 
 
 	for pagenum in range(2, num_pages + 1):
