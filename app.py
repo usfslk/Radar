@@ -90,7 +90,7 @@ def results():
 	resultslist = []
 	scorelist = []
 	index = 0
-	limit = 12
+	limit = 20
 
 	data = newsapi.get_everything(    q=keyword,
 									  sources='crypto-coins-news',
