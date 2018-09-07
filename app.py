@@ -54,7 +54,7 @@ def main():
 	for row in cursor.execute("SELECT Title, Description, URL, IMGLink, Score, sqltime FROM main  WHERE Score > 60 ORDER BY score DESC LIMIT 4"):
 		poslist.append(row)
 
-	for row in cursor.execute("SELECT Title, Description, URL, IMGLink, Score, sqltime FROM main  WHERE Score < 40 ORDER BY score ASC LIMIT 4"):
+	for row in cursor.execute("SELECT Title, Description, URL, IMGLink, Score, sqltime FROM main  WHERE Score < 40 ORDER BY score DESC LIMIT 4"):
 		neglist.append(row)
 
 
