@@ -28,6 +28,27 @@
 
 }
 
+.main-container {
+  padding-top: 90px !important;
+  background-color: #fcfcfc;
+  padding-left: 5%;
+  padding-right: 5%;
+  min-height: 800px
+}
+
+.fund {
+  background-color: #fff;
+  padding: 2%;
+  width: 50%;
+  margin-top: 1%;
+  border-radius: 10px; 
+}
+
+.check-icon {
+  padding-right: 30%;
+  padding-left: 30%;
+}
+
 
 
 /*-------------------------------------------------------------------
@@ -14236,7 +14257,6 @@ html {
   overflow: auto !important; }
 
 .page-body-wrapper {
-  min-height: calc(100vh - 63px);
   display: -webkit-flex;
   display: flex;
   -webkit-flex-direction: row;
@@ -14289,7 +14309,7 @@ pre {
 
 /* Footer */
 .footer {
-  background: #fcfcfc;
+  background: #ffffff;
   padding: 20px 1rem;
   transition: all 0.25s ease;
   -moz-transition: all 0.25s ease;
@@ -14539,14 +14559,14 @@ pre {
   height: 200px; }
 
 .purchace-popup > div > span {
-  background: rgba(228, 228, 228, 0.46);
+  background: #fff;
+  border-radius: 10px;
   padding: 15px 20px;
   border-radius: 3px; }
   .purchace-popup > div > span .btn {
     margin-right: 20px;
     font-weight: 500;
-    color: #ffffff;
-    border-radius: 5px; }
+    border-radius: 10px; }
     .purchace-popup > div > span .btn.download-button {
       background: rgba(228, 228, 228, 0.2);
       color: #b1b1b1;
@@ -15928,7 +15948,7 @@ ul {
     right: 0;
     left: auto;
     border: 1px solid rgba(182, 182, 182, 0.1);
-    padding: 0 0 20px;
+    padding: 0 0 10px;
     min-width: 100%;
     border-radius: 6px;
     -webkit-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.13);

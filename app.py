@@ -125,5 +125,9 @@ def analytics():
 def about():
 	return render_template('about.html')
 
+@app.route('/funding')
+def funding():
+	return render_template('funding.html')
+
 if __name__ == "__main__":
     app.run(debug=True)
