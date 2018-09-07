@@ -34,7 +34,7 @@ def main():
 	resultslist = []
 	scorelist = []
 	index = 0
-	limit = 1
+	limit = 8
 
 	for index, post in zip(range(limit), load):
 		title = post['title']
@@ -56,7 +56,7 @@ def main():
 	sumlist = (sum(scorelist))
 	lenght_list = (len(scorelist))
 	before = (sumlist/lenght_list)
-	average = float("%.0f" % before)
+	average = float("%.0f" % before) + 10
 
 	return render_template('main.html', resultslist=resultslist, keyword=keyword, average=average)
 
@@ -84,7 +84,7 @@ def results():
 	resultslist = []
 	scorelist = []
 	index = 0
-	limit = 1
+	limit = 12
 
 	data = newsapi.get_everything(    q=keyword,
 									  sources='crypto-coins-news',
