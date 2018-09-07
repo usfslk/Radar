@@ -129,5 +129,9 @@ def about():
 def funding():
 	return render_template('funding.html')
 
+@app.route('/contact')
+def contact():
+	return render_template('contact.html')
+
 if __name__ == "__main__":
     app.run(debug=True)
