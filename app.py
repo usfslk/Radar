@@ -34,7 +34,7 @@ def main():
 	resultslist = []
 	scorelist = []
 	index = 0
-	limit = 12
+	limit = 1
 
 	for index, post in zip(range(limit), load):
 		title = post['title']
@@ -84,7 +84,7 @@ def results():
 	resultslist = []
 	scorelist = []
 	index = 0
-	limit = 12
+	limit = 1
 
 	data = newsapi.get_everything(    q=keyword,
 									  sources='crypto-coins-news',
