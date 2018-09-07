@@ -36,6 +36,12 @@
   min-height: 800px
 }
 
+.theme-two {
+    padding-top: 0px !important;
+  padding-left: 0;
+  padding-right: 0;
+}
+
 .fund {
   background-color: #fff;
   padding: 2%;
@@ -14388,7 +14394,6 @@ pre {
   -moz-transition: all 0.25s ease;
   -webkit-transition: all 0.25s ease;
   -ms-transition: all 0.25s ease;
-  border-top: 1px solid #fff;
   font-size: calc(13px - 0.05rem);
   font-family: "Poppins", sans-serif; }
   .footer a {
@@ -16426,7 +16431,7 @@ ul {
   .auth.theme-two .banner-section .slide-content {
     width: 100%; }
     .auth.theme-two .banner-section .slide-content.bg-1 {
-      background: url("../images/auth/login_2.jpg") no-repeat center center;
+      background: url("../images/auth/login.jpg") no-repeat center center;
       background-size: cover; }
     .auth.theme-two .banner-section .slide-content.bg-2 {
       background: url("../images/auth/register_2.jpg") no-repeat center center;
