@@ -22,7 +22,7 @@ scorelist = []
 index = 0
 limit = 20
 pagenum = 1
-num_pages = 25
+num_pages = 10
 
 keyword = 'Monero'
 
