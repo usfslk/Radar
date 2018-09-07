@@ -104,7 +104,7 @@ def results():
 		description = post['description']
 		url = post['url']
 		imglink = post['urlToImage']
-		scoredesc = indicoio.sentiment(title)
+		scoredesc = indicoio.sentiment_hq(title)
 		calc = (scoredesc*100)
 		score = ("%.2f" % calc)
 		scorelist.append(float(score))
@@ -118,7 +118,7 @@ def results():
 	sumlist = (sum(scorelist))
 	lenght_list = (len(scorelist))
 	before = (sumlist/lenght_list)
-	average = float("%.0f" % before)
+	average = float("%.0f" % before) + 10
 
 	return render_template('analysis.html', resultslist=resultslist, keyword=keyword, average=average)
 
