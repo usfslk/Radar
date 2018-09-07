@@ -31,7 +31,8 @@ def main():
 	                              )
 
 	load = data['articles']
-	resultslist = []
+	poslist = []
+	neglist = []
 	scorelist = []
 	index = 0
 	limit = 8
@@ -50,15 +51,19 @@ def main():
 		cursor.execute('INSERT INTO main (Title, Description, URL, IMGLink, Score) VALUES (?, ?, ?, ?, ?)', (nline))
 		conn.commit()
 
-	for row in cursor.execute("SELECT Title, Description, URL, IMGLink, Score, sqltime FROM main ORDER BY Score DESC, sqltime DESC LIMIT 15"):
-		resultslist.append(row)
+	for row in cursor.execute("SELECT Title, Description, URL, IMGLink, Score, sqltime FROM main  WHERE Score > 60 ORDER BY score DESC LIMIT 4"):
+		poslist.append(row)
+
+	for row in cursor.execute("SELECT Title, Description, URL, IMGLink, Score, sqltime FROM main  WHERE Score < 40 ORDER BY score ASC LIMIT 4"):
+		neglist.append(row)
+
 
 	sumlist = (sum(scorelist))
 	lenght_list = (len(scorelist))
 	before = (sumlist/lenght_list)
 	average = float("%.0f" % before) + 10
 
-	return render_template('main.html', resultslist=resultslist, keyword=keyword, average=average)
+	return render_template('main.html', poslist=poslist, neglist=neglist, keyword=keyword, average=average)
 
 
 ###

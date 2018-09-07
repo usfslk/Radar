@@ -62,3 +62,25 @@ $('document').ready(function() {
   var msg = $('#message');
   msg.autosize();
 });
+
+$(".progress-bar").each(function() {
+  var progress-bar = $(this).width() / $(this).parent().width() * 100;
+  var color = '#f5f5f5';
+  if (!isNaN(progress-bar)) {
+    if (progress-bar >= 75) {
+      color = 'green';
+    }
+    else if (progress-bar >= 50) {
+      color = 'blue';
+    }
+    else if (progress-bar >= 25) {
+      color = 'yellow';
+    }
+    else {
+      color = 'red';
+    }    
+    $(this).css({
+      'background': color
+    });
+  }
+});
