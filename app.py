@@ -44,7 +44,7 @@ def main():
 		url = post['url']
 		imglink = post['urlToImage']
 		datetime = post['publishedAt']
-		scoredesc = indicoio.sentiment(description)
+		scoredesc = indicoio.sentiment(title)
 		calc = (scoredesc*100)
 		score = ("%.4f" % calc)
 		scorelist.append(float(score))
