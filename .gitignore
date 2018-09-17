@@ -122,5 +122,6 @@ venv.bak/
 pyvenv.cfg
 pip-selfcheck.json
 
+./static
 
 # End of https://www.gitignore.io/api/python
