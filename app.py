@@ -69,8 +69,6 @@ def main():
 	return render_template('main.html', poslist=poslist, neglist=neglist, keyword=keyword, average=average)
 
 
-###
-
 @app.route('/analysis', methods=['GET','POST'])
 def results():
 
