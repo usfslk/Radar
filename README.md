@@ -4,7 +4,7 @@
 
 Flask/SQLite3
 
-![showcase](https://i.imgur.com/Tmjbrbq.jpg)
+![showcase](https://i.imgur.com/1dAZBx6.jpg)
 
 ## License
 
