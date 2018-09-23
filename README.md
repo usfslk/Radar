@@ -4,7 +4,7 @@
 
 ![showcase](https://i.imgur.com/1dAZBx6.jpg)
 
-Flask/SQLite3
+Flask/SQLite3/Indico
 
 ## License
 
