@@ -1,0 +1,82 @@
+{% extends "common/page_base.html" %}
+{% block content %}
+
+<style type="text/css">
+  .spacer {
+    margin-top: 10px
+  }
+  .mycard {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 2px 1px 15px #f3f1f1;
+  padding: 50px;
+  margin: 50px,
+}
+</style>
+    <!-- Header -->
+    <header class="masthead">
+      <div class="container d-flex h-100 align-items-center">
+        <div class="mx-auto text-center">
+          <h1 class="mx-auto my-0 text-uppercase">Radar</h1>
+          <h2 class="text-white-50 mx-auto mt-2 mb-5">True feelings behind every cryptocoin</h2>
+          <a href="#signup" class="btn btn-primary js-scroll-trigger">Try It</a>
+        </div>
+      </div>
+    </header>
+
+   <!-- Projects Section -->
+    <section id="projects" class="projects-section bg-light">
+      <div class="container">
+
+        <!-- Featured Project Row -->
+        <div class="row align-items-center no-gutters mb-4 mb-lg-5">
+          <div class="col-xl-8 col-lg-7">
+            <img class="img-fluid mb-3 mb-lg-0" src="static/img/illu.png" alt="">
+          </div>
+          <div class="col-xl-4 col-lg-5">
+            <div class="featured-text text-center text-lg-left">
+              <h4>Mood Today : {{ average }}%</h4>
+              <p class="text-black-50 mb-0">Radar is open source and MIT licensed. This means you can use it for any project - even commercial projects! Download it, customize it, and publish your website!</p>
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="row">
+          {% for Title, Description, URL, IMGLink, Score in resultslist %}
+          
+            <div class="mycard">
+              <a href="{{ URL }}" target="_blank">
+              <h4>{{ Title }}</h4>
+              </a>
+              <hr class="d-none d-lg-block">
+             <p class="text-black-50">{{ Description }}</p>
+            <h5>{{ Score }}%</h5>
+          </div>
+
+          <div class="spacer">&nbsp</div>
+
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Form -->
+    <section id="signup" class="signup-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10 col-lg-8 mx-auto text-center">
+            <h2 class="text-white mb-5">Try it for free</h2>
+
+            <form action=/results class="form-inline d-flex">
+              <input class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" required="" name="keyword" placeholder="Enter Cryptocoin">
+              <button type="submit" class="btn btn-primary mx-auto">Get Started</button>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {% endblock %}
