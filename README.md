@@ -1,4 +1,4 @@
-# Chrysntm Lab  ![CI](https://img.shields.io/badge/build-passing-brightgreen.svg)
+# Radar Lab  ![CI](https://img.shields.io/badge/build-passing-brightgreen.svg)
 
 ### Twitter feed and news articles sentiment analysis
 
