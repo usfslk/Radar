@@ -1,0 +1,36 @@
+{% extends "common/page_base.html" %}
+{% block content %}
+<h3 >Contact</h3>
+<p>Drop us a line</p>
+<section>
+  <form id="contact" class="form-horizontal " role="form">
+    <div class="form-group">  
+      <div class="col-sm-12">
+        <input id="name" name="name" type="text" placeholder="NAME" class="form-control">
+      </div>
+    </div>
+    <div class="form-group">  
+      <div class="col-sm-12">
+        <input id="email" name="email" type="email" placeholder="EMAIL" class="form-control">
+      </div>
+    </div>
+    <div class="form-group">  
+      <div class="col-sm-12">
+        <textarea class="form-control" id="message" name="message" placeholder="MESSAGE"></textarea>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center">
+    <button id="send" name="send" class="btn-outline-dark pl-5 pr-5">send</button>
+    </div>
+  </form>
+</section>
+
+{% endblock %}
+
+
+
+
+
+
+
